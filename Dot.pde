@@ -4,17 +4,17 @@ class Dot {
   int yPos;
   int xMax;
   int yMax;
-  
+
   // konstruktør
   Dot(int x, int y, int maxX, int maxY) {
-     xPos=x;
-     yPos=y;
-     xMax=maxX;
-     yMax=maxY;
+    xPos=x; //<>//
+    yPos=y;
+    xMax=maxX;
+    yMax=maxY;
   }
   //player = new Dot(0,0,width-1, height-1);
   // metoder
-  
+
   int getX() {
     return xPos;
   }
@@ -22,5 +22,20 @@ class Dot {
   int getY() {
     return yPos;
   }
+
+  void moveUp() {
+    yPos--;
+  }
   
+  void moveLeft() {
+    xPos--;
+  }
+  
+  void moveDown() {
+    yPos++; //<>//
+  }
+  
+  void moveRight() {
+    xPos++;
+  }
 }
