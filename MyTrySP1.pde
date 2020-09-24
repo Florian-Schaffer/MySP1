@@ -35,14 +35,6 @@ void draw() {
 
 void keyPressed() {
   game.onKeyPressed(key);
-  /*
-  if (key == 'a' || key == 'A') {
-    game.player.moveDown();
-  }
-  if (key == 's' || key == 'S') {
-    game.player.moveRight();
-  }
-  */
 }
 
 void keyReleased() {

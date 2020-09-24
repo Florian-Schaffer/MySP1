@@ -1,4 +1,4 @@
-class Dot {
+class Dot { //<>// //<>//
   // egenskaber
   int xPos;
   int yPos;
@@ -7,7 +7,7 @@ class Dot {
 
   // konstruktør
   Dot(int x, int y, int maxX, int maxY) {
-    xPos=x; //<>//
+    xPos=x;
     yPos=y;
     xMax=maxX;
     yMax=maxY;
@@ -25,17 +25,29 @@ class Dot {
 
   void moveUp() {
     yPos--;
+    if (yPos < 0) {
+      yPos = 0;
+    }
   }
-  
+
   void moveLeft() {
     xPos--;
+    if (xPos < 0) {
+      xPos = 0;
+    }
   }
-  
-  void moveDown() {
-    yPos++; //<>//
+
+    void moveDown() {
+      yPos++;
+      if (yPos > yMax) {
+        yPos = yMax;
+      }
+    }
+
+    void moveRight() {
+      xPos++;
+      if (xPos > xMax) {
+        xPos = xMax;
+      }
+    }
   }
-  
-  void moveRight() {
-    xPos++;
-  }
-}

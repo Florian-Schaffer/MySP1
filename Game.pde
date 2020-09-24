@@ -23,7 +23,7 @@ class Game { //<>//
     for (int i = 0; i < nE; ++i) {
       enemies[i] = new Dot(w-1, h-1, w-1, h-1);
     }
-  }
+  } //<>//
   // metoder
 
   int[][] getBoard() { 
@@ -75,6 +75,28 @@ class Game { //<>//
   }
 
   void updateEnemies() {
+    // loope igennem alle fjender
+    for(int i=0;i<enemies.length;i++) {
+      // nogle gange skal fjende i følge efter spiller
+      // andre gange flytte sig random
+      int fieldsX = player.xPos - enemies[i].xPos;
+      int fieldsY = player.yPos - enemies[i].yPos;
+      int rand = (int) random(4);
+      if (rand == 0) {
+         enemies[i].moveUp();
+      }
+      if (rand == 1) {
+         enemies[i].moveDown();
+      }
+      if (rand == 2) {
+         enemies[i].moveRight();
+      }
+      if (rand == 3) {
+         enemies[i].moveLeft();
+      }
+      
+    }
+    
   }
 
   void checkForCollisions() {
