@@ -16,7 +16,7 @@ void draw() {
   for (int y = 0; y < game.getHeight(); y++) {
     for (int x = 0; x < game.getWidth(); x++) {
       //println(board[x][y]);
-      if (board[x][y]==1) { //<>//
+      if (board[x][y]==1) {
         println("player found " + x + " " + y);
         fill(0, 0, 255);
       } else if (board[x][y]==2) {
@@ -30,6 +30,8 @@ void draw() {
       rect(x*40, y*40, 40, 40);
     }
   }
+    fill(255);
+  text("Lifes: "+game.playerLife, 25,25);
 
 }
 

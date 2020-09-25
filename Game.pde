@@ -1,4 +1,4 @@
-class Game { //<>//
+class Game { //<>// //<>// //<>//
   // egenskaber
   int w;
   int h;
@@ -15,7 +15,7 @@ class Game { //<>//
     h = gH;
     numberOfEnemies = nE;
     enemies = new Dot[nE];
-    playerLife=100; //<>//
+    playerLife=100;
     board  = new int[gW][gH];
     player = new Dot(0, 1, w-1, h-1);
     keys = new Keys();
@@ -23,7 +23,7 @@ class Game { //<>//
     for (int i = 0; i < nE; ++i) {
       enemies[i] = new Dot(w-1, h-1, w-1, h-1);
     }
-  } //<>//
+  }
   // metoder
 
   int[][] getBoard() { 
@@ -40,9 +40,12 @@ class Game { //<>//
     return w;
   }
   
+  int getPlayerLife() {
+    return playerLife;
+  }
+
   void onKeyPressed(char k) {
     keys.onKeyPressed(k);
-    
   }
   void onKeyReleased(char k) {
     keys.onKeyReleased(k);
@@ -76,27 +79,40 @@ class Game { //<>//
 
   void updateEnemies() {
     // loope igennem alle fjender
-    for(int i=0;i<enemies.length;i++) {
+    for (int i=0; i<enemies.length; i++) {
       // nogle gange skal fjende i følge efter spiller
       // andre gange flytte sig random
-      int fieldsX = player.xPos - enemies[i].xPos;
-      int fieldsY = player.yPos - enemies[i].yPos;
+
+      if (i>=0) {
+
+        int dX = player.xPos - enemies[i].xPos; //<>//
+        int dY = player.yPos - enemies[i].yPos;
+        if (dX>0) {
+          //spilleren er til højre - så flyt mod højr
+          enemies[i].moveRight();
+        } else  if (dX<0) {
+          enemies[i].moveLeft();
+        } else if (dY>0) {
+          //spilleren er til højre - så flyt mod højr
+          enemies[i].moveDown();
+        } else if (dY<0) {
+          enemies[i].moveUp();
+        }
+      }
       int rand = (int) random(4);
       if (rand == 0) {
-         enemies[i].moveUp();
+        enemies[i].moveUp();
       }
       if (rand == 1) {
-         enemies[i].moveDown();
+        enemies[i].moveDown();
       }
       if (rand == 2) {
-         enemies[i].moveRight();
+        enemies[i].moveRight();
       }
       if (rand == 3) {
-         enemies[i].moveLeft();
+        enemies[i].moveLeft();
       }
-      
     }
-    
   }
 
   void checkForCollisions() {
@@ -105,24 +121,24 @@ class Game { //<>//
     for (int i=0; i<enemies.length; i++) {
       if (enemies[i].getX() == player.getX() && enemies[i].getY() == player.getY()) {
         // then coll and player looses one lifepoint
-        //playerLift--;
+        playerLife--;
       }
     }
   }
 
-    void clearBoard() {
-      for (int y = 0; y < h; ++y) {
-        for (int x = 0; x < w; ++x) {
-          board[x][y]=0;
-        }
-      }
-    }
-
-    void populateBoard() {
-      // insert player
-      board[player.getX()][player.getY()] = 1; //<>//
-      for (int i = 0; i < enemies.length; ++i) {
-        board[enemies[i].getX()][enemies[i].getY()]= 2;
+  void clearBoard() {
+    for (int y = 0; y < h; ++y) {
+      for (int x = 0; x < w; ++x) {
+        board[x][y]=0;
       }
     }
   }
+
+  void populateBoard() {
+    // insert player
+    board[player.getX()][player.getY()] = 1;
+    for (int i = 0; i < enemies.length; ++i) {
+      board[enemies[i].getX()][enemies[i].getY()]= 2;
+    }
+  }
+}

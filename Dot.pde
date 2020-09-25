@@ -1,4 +1,4 @@
-class Dot { //<>// //<>//
+class Dot { //<>//
   // egenskaber
   int xPos;
   int yPos;
