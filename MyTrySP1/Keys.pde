@@ -1,6 +1,6 @@
 class Keys {
   //egenskaber
-  private boolean wDown = false;
+  private boolean wDown = false; 
   private boolean aDown = false;
   private boolean sDown = false;
   private boolean dDown = false;
@@ -9,6 +9,7 @@ class Keys {
   Keys() {
   }
   // metoder
+  //Når du klikker bliver den true
   void onKeyPressed(char k) {
     if(k=='a' || k=='A') {
       aDown=true;
@@ -24,6 +25,7 @@ class Keys {
     }
   }
   
+  //Når du slipper bliver den false
   void onKeyReleased(char k) {
         if(k=='a' || k=='A') {
       aDown=false;
