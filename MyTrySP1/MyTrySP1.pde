@@ -32,17 +32,20 @@ void draw() {
       } else if (board[x][y]==2) {
         fill(255, 0, 0); //rød - enemies
       } else if (board[x][y]==3) {
-        fill(0, 255, 0); //grøn 
-     } else if (board[x][y]==0) { 
-        fill(0, 0, 0); //går væk fra en firkant - ingen farve - baggrunden 
+        fill(0, 255, 0); //grøn
+      } else if (board[x][y]==4) {
+        fill(255, 0, 255);
+      } else if (board[x][y]==0) { 
+        fill(0, 0, 0); //går væk fra en firkant - ingen farve - baggrunden
       }
       stroke(100, 100, 100); //farve på linjer 
       rect(x*40, y*40, 40, 40); //firkanter størrelse
     }
   }
-    fill(255); //hvid riller
-  text("Lifes: "+game.playerLife, 25,25); //Hvor mange liv der er tilbage
-
+  fill(255); //hvid riller
+  text("Player 1 Lives: "+game.playerLife, 25, 25); //Hvor mange liv p1 tilbage
+  text("Player 2 Lives; "+game.player2Life, 25,50); //hvor mange liv p2 har tilbage
+  game.gameOver();
 }
 
 //kalder metoden i class
